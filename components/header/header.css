@@ -1,0 +1,46 @@
+.container_header {
+  align-items: center;
+  background-color: #000;
+  border-bottom: 1px solid red;
+  color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 8px;
+}
+
+.container_header img {
+  margin: 8px;
+}
+
+.container_header nav {
+  display: flex;
+}
+
+.container_header ul {
+  display: flex;
+  padding: 0px 8px;
+}
+
+.container_header li {
+  background-color: #222;
+  border-radius: 8px;
+  list-style: none;
+  margin: 0px 4px;
+  padding: 8px;
+}
+
+.container_header li:hover {
+  background-color: red;
+}
+
+.container_header .login_header {
+  border-left: 2px solid red;
+}
+
+.container_header a {
+  color: #fff;
+  font-size: small;
+  padding: 8px;
+  text-decoration: none;
+}
