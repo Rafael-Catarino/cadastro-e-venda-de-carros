@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="./components/header/header.css">
   <link rel="stylesheet" href="./components/slider/slider.css">
   <link rel="stylesheet" href="./components/search/search.css">
+  <link rel="stylesheet" href="./components/footer/footer.css">
   <link rel="stylesheet" href="index.css">
   <title>Catarino Veículos</title>
 </head>
@@ -32,6 +33,12 @@
     </section>
 
   </main>
+
+  <footer class="container_footer">
+    <?php
+    include "./components/footer/footer.html";
+    ?>
+  </footer>
 
   <script src="script.js"></script>
 
