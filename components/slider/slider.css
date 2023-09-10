@@ -1,0 +1,48 @@
+.container_slider {
+  text-align: center;
+  background-image: linear-gradient(to top, #fff, #000);
+}
+
+.container_slider h1 {
+  color: #fff;
+  font-size: 45px;
+  padding: 8px;
+}
+
+.slider {
+  overflow: hidden;
+}
+
+.slides {
+  width: 400%;
+  display: flex;
+}
+
+.slides input {
+  display: none;
+}
+
+.slide {
+  width: 25%;
+  position: relative;
+}
+
+.slide img {
+  width: 100%;
+}
+
+#radio1:checked ~ .first {
+  margin-left: 0;
+}
+
+#radio2:checked ~ .first {
+  margin-left: -25%;
+}
+
+#radio3:checked ~ .first {
+  margin-left: -50%;
+}
+
+#radio4:checked ~ .first {
+  margin-left: -75%;
+}

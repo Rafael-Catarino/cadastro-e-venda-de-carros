@@ -1,0 +1,15 @@
+.container_footer {
+  margin-top: 12px;
+  color: white;
+  border-top: 2px solid red;
+  background-color: black;
+  padding: 8px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+}
+
+.container_footer span {
+  font-weight: bolder;
+}
