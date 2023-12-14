@@ -1,7 +1,7 @@
 <img src="../../img/car-logo.png" alt="logo da loja">
 <nav>
   <ul>
-    <li><a href="index.php">HOME</a></li>
+    <li><a href="../../index.php">HOME</a></li>
     <li><a href="">CARROS</a></li>
     <li><a href="">CONTATO</a></li>
     <li><a href="">LOCALIZAÇÃO</a></li>

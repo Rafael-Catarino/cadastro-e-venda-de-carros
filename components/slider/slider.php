@@ -29,3 +29,5 @@
   </div>
 
 </div>
+
+<script src="components/slider/script_slider.js"></script>

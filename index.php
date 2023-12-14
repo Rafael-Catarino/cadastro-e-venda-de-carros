@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="./components/slider/slider.css">
   <link rel="stylesheet" href="./components/search/search.css">
   <link rel="stylesheet" href="./components/footer/footer.css">
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="reset.css">
   <title>Catarino Veículos</title>
 </head>
 
@@ -39,8 +39,6 @@
     include "./components/footer/footer.html";
     ?>
   </footer>
-
-  <script src="script.js"></script>
 
 </body>
 
