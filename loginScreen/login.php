@@ -1,3 +1,8 @@
+<?php
+require_once "DataBaseLogin.php";
+$p = new DataBaseLogin("127.0.0.1", 'root', '', 'projeto_catarinoVeiculos');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -9,6 +14,7 @@
   <link rel="stylesheet" href="../components/footer/footer.css">
   <link rel="stylesheet" href="./login.css">
   <link rel="stylesheet" href="../index.css">
+  <link rel="stylesheet" href="../reset.css">
 </head>
 
 <body>
@@ -23,6 +29,21 @@
     <sectio class="container_login login_enter">
 
       <h3>Login</h3>
+
+      <?php
+      if (isset($_POST["submit"])) {
+        $email = addslashes(strtolower($_POST["email"]));
+        $password = $_POST["password"];
+        $res = $p->selectOneData($email, $password);
+        if ($res) {
+          session_start();
+          $_SESSION['username'] = $res["name"];
+          header("Location:adminPage.php");
+        } else {
+          echo "<p id='lgError'>Login Incorreto</p>";
+        }
+      }
+      ?>
 
       <form action="login.php" method="post" name="f_login" id="f_login">
 

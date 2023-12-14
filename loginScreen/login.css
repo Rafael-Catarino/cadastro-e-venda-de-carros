@@ -68,3 +68,7 @@
 .register {
   display: none;
 }
+
+#lgError {
+  color: red;
+}
