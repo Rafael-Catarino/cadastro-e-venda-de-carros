@@ -1,8 +1,8 @@
 .container_footer {
   margin-top: 12px;
-  color: white;
-  border-top: 2px solid red;
-  background-color: black;
+  color: var(--white);
+  border-top: 2px solid var(--red);
+  background-color: var(--black);
   padding: 8px;
   text-align: center;
   position: fixed;

@@ -40,7 +40,7 @@ $p = new DataBaseLogin("127.0.0.1", 'root', '', 'projeto_catarinoVeiculos');
           $_SESSION['username'] = $res["name"];
           header("Location:adminPage.php");
         } else {
-          echo "<p id='lgError'>Login Incorreto</p>";
+          echo "<p class='login_error'>Login Incorreto</p>";
         }
       }
       ?>
@@ -55,27 +55,7 @@ $p = new DataBaseLogin("127.0.0.1", 'root', '', 'projeto_catarinoVeiculos');
 
         <input type="submit" name="submit" value="ENTRAR" class="login_button">
       </form>
-      <span>Não tem cadastro? <button class="btn_register">Cadastre-se</button> </span>
-    </sectio>
 
-    <sectio class="container_login register">
-      <h3>Cadastre-se</h3>
-      <form action="#" method="post" name="" id="">
-        <label for="">Nome:</label>
-        <input type="text" name="name" id="name" placeholder="Digite o seu nome">
-
-        <label for="email-register">E-mail: </label>
-        <input type="email" name="email" id="email_register" placeholder="Digite o seu E-mail">
-
-        <label for="password">Senha: </label>
-        <input type="password" name="password" id="password-register" placeholder="Digite a sua Senha">
-
-        <label for="password">Repita sua Senha: </label>
-        <input type="password" name="password" id="password_register_repite" placeholder="Digite a sua Senha">
-
-        <input type="submit" value="CADASTRAR" class="register_button">
-      </form>
-      <span>Já tem uma conta? <button class="btn_login">Faça Login</button> </span>
     </sectio>
   </main>
 

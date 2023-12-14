@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../components/header/header.css">
+  <link rel="stylesheet" href="../components/menuAdminPage/menuAdminPage.css">
   <link rel="stylesheet" href="../components/footer/footer.css">
   <link rel="stylesheet" href="../reset.css">
   <title>Document</title>
@@ -18,7 +19,9 @@
   </header>
 
   <main>
-
+    <?php
+    include "../components/menuAdminPage/menuAdminPage.php"
+    ?>
   </main>
 
   <footer class="container_footer">
@@ -26,6 +29,8 @@
     include "../components/footer/footer.html";
     ?>
   </footer>
+
+  <script src="../components/menuAdminPage/script_menuAdminPage.js"></script>
 </body>
 
 </html>

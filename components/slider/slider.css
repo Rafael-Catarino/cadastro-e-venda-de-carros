@@ -4,7 +4,7 @@
 }
 
 .container_slider h1 {
-  color: #fff;
+  color: var(--white);
   font-size: 45px;
   padding: 8px;
 }
