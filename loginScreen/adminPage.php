@@ -1,3 +1,16 @@
+<?php
+session_start();
+if (isset($_SESSION["numlogin"])) {
+  if ($_SESSION["numlogin"] != $_GET["num"]) {
+    echo "<p>Login não efetuado</p>";
+    exit;
+  }
+} else {
+  echo "<p>Login não efetuado</p>";
+  exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 

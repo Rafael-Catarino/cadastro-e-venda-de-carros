@@ -1,6 +1,7 @@
 <?php
+require "securityCode.php";
 require_once "DataBaseLogin.php";
-$p = new DataBaseLogin("127.0.0.1", 'root', '', 'projeto_catarinoVeiculos');
+$p = new DataBaseCollaborators("127.0.0.1", 'root', '', 'projeto_catarinoVeiculos');
 ?>
 
 <!DOCTYPE html>
@@ -36,10 +37,14 @@ $p = new DataBaseLogin("127.0.0.1", 'root', '', 'projeto_catarinoVeiculos');
         $password = $_POST["password"];
         $res = $p->selectOneData($email, $password);
         if ($res) {
+          $key = createSecurityKey();
           session_start();
+          $_SESSION['numlogin'] = $key;
           $_SESSION['username'] = $res["name"];
-          header("Location:adminPage.php");
+          $_SESSION['access'] = $res["access"]; //0==restrito / 1==Total;
+          header("Location:adminPage.php?num=$key");
         } else {
+          echo $email;
           echo "<p class='login_error'>Login Incorreto</p>";
         }
       }
