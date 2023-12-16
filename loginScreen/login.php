@@ -1,6 +1,6 @@
 <?php
 require "securityCode.php";
-require_once "DataBaseLogin.php";
+require_once "DataBaseCollaborators.php";
 $p = new DataBaseCollaborators("127.0.0.1", 'root', '', 'projeto_catarinoVeiculos');
 ?>
 
@@ -13,7 +13,7 @@ $p = new DataBaseCollaborators("127.0.0.1", 'root', '', 'projeto_catarinoVeiculo
   <title>Faça o seu Login</title>
   <link rel="stylesheet" href="../components/header/header.css">
   <link rel="stylesheet" href="../components/footer/footer.css">
-  <link rel="stylesheet" href="./login.css">
+  <link rel="stylesheet" href="./genericForm.css">
   <link rel="stylesheet" href="../index.css">
   <link rel="stylesheet" href="../reset.css">
 </head>
@@ -27,7 +27,7 @@ $p = new DataBaseCollaborators("127.0.0.1", 'root', '', 'projeto_catarinoVeiculo
 
   <main>
 
-    <sectio class="container_login login_enter">
+    <sectio class="genericForm">
 
       <h3>Login</h3>
 
@@ -35,7 +35,7 @@ $p = new DataBaseCollaborators("127.0.0.1", 'root', '', 'projeto_catarinoVeiculo
       if (isset($_POST["submit"])) {
         $email = addslashes(strtolower($_POST["email"]));
         $password = $_POST["password"];
-        $res = $p->selectOneData($email, $password);
+        $res = $p->selectDataLogin($email, $password);
         if ($res) {
           $key = createSecurityKey();
           session_start();
@@ -44,8 +44,7 @@ $p = new DataBaseCollaborators("127.0.0.1", 'root', '', 'projeto_catarinoVeiculo
           $_SESSION['access'] = $res["access"]; //0==restrito / 1==Total;
           header("Location:adminPage.php?num=$key");
         } else {
-          echo $email;
-          echo "<p class='login_error'>Login Incorreto</p>";
+          echo "<p class='message'>Login Incorreto</p>";
         }
       }
       ?>
@@ -53,12 +52,12 @@ $p = new DataBaseCollaborators("127.0.0.1", 'root', '', 'projeto_catarinoVeiculo
       <form action="login.php" method="post" name="f_login" id="f_login">
 
         <label for="email">E-mail: </label>
-        <input type="email" name="email" id="email" placeholder="Digite o seu E-mail">
+        <input type="email" name="email" id="email" placeholder="Digite o seu E-mail" required>
 
         <label for="password">Senha: </label>
-        <input type="password" name="password" id="password" placeholder="Digite a sua Senha">
+        <input type="password" name="password" id="password" placeholder="Digite a sua Senha" required>
 
-        <input type="submit" name="submit" value="ENTRAR" class="login_button">
+        <input type="submit" name="submit" value="ENTRAR" class="generic_btn">
       </form>
 
     </sectio>

@@ -1,10 +1,15 @@
 .container_login_screen {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translate(-50%, -20px);
   text-align: center;
   margin: 12px;
 }
 
 .container_login_screen p {
   margin: 12px;
+  font-weight: bold;
 }
 
 .menu_admin ul {

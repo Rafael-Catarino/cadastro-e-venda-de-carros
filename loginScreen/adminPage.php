@@ -21,7 +21,7 @@ if (isset($_SESSION["numlogin"])) {
   <link rel="stylesheet" href="../components/menuAdminPage/menuAdminPage.css">
   <link rel="stylesheet" href="../components/footer/footer.css">
   <link rel="stylesheet" href="../reset.css">
-  <title>Document</title>
+  <title>Página da Administração</title>
 </head>
 
 <body>
