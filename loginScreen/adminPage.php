@@ -18,7 +18,7 @@ if (isset($_SESSION["numlogin"])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../components/header/header.css">
-  <link rel="stylesheet" href="../components/menuAdminPage/menuAdminPage.css">
+  <link rel="stylesheet" href="./AdminPage.css">
   <link rel="stylesheet" href="../components/footer/footer.css">
   <link rel="stylesheet" href="../reset.css">
   <title>Página da Administração</title>
@@ -32,9 +32,55 @@ if (isset($_SESSION["numlogin"])) {
   </header>
 
   <main>
-    <?php
-    include "../components/menuAdminPage/menuAdminPage.php"
-    ?>
+    <section class="container_login_screen">
+      <p>Menu principal de gerenciamento </p>
+
+      <nav class="menu_admin">
+        <ul>
+          <li class="menu_admin_li">
+            <button>CARROS</button>
+            <div>
+              <a href="#" target="_self">novo</a>
+              <a href="#" target="_self">editar</a>
+              <a href="#" target="_self">exclir</a>
+              <a href="#" target="_self">marcas</a>
+            </div>
+          </li>
+
+          <li class="menu_admin_li">
+            <button>SLIDER</button>
+            <div>
+              <a href="#" target="_self">configurar</a>
+            </div>
+          </li>
+
+          <?php
+          if ($_SESSION['access'] == 1) {
+          ?>
+
+            <li class="menu_admin_li">
+              <button>USUARIOS</button>
+              <div>
+                <a href="./newCollaborator.php?num=<?php echo $_GET["num"]; ?>" target="_self">novo</a>
+                <a href="#" target="_self">editar</a>
+                <a href="./deleteCollaborator.php?num=<?php echo $_GET["num"]; ?>" target="_self">excluir</a>
+              </div>
+            </li>
+
+          <?php
+          };
+          ?>
+
+          <li class="menu_admin_li">
+            <button>LOGOFF</button>
+            <div>
+              <a href="#" target="_self">sair</a>
+            </div>
+          </li>
+
+        </ul>
+      </nav>
+    </section>
   </main>
 
   <footer class="container_footer">
@@ -43,7 +89,7 @@ if (isset($_SESSION["numlogin"])) {
     ?>
   </footer>
 
-  <script src="../components/menuAdminPage/script_menuAdminPage.js"></script>
+  <script src="./script_menuAdminPage.js"></script>
 </body>
 
 </html>

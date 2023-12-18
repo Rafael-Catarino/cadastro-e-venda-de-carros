@@ -25,7 +25,7 @@ if (isset($_SESSION["numlogin"])) {
   <link rel="stylesheet" href="../components/footer/footer.css">
   <link rel="stylesheet" href="./genericForm.css">
   <link rel="stylesheet" href="../reset.css">
-  <title>Cadastro de Usuários</title>
+  <title>Cadastro de funcionário</title>
 </head>
 
 <body>
@@ -41,7 +41,7 @@ if (isset($_SESSION["numlogin"])) {
 
       <?php
       if (isset($_GET["btn_form"])) {
-        $userName = strtolower($_GET["username"]);
+        $userName = strtoupper($_GET["username"]);
         $userEmail = strtolower($_GET["user_email"]);
         $userPassword = $_GET["user_password"];
         $userAccess = $_GET["user_access"];

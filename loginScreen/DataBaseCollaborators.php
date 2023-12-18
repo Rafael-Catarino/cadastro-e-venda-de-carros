@@ -62,4 +62,18 @@ class DataBaseCollaborators
     $res->execute();
     return $res->fetch(PDO::FETCH_ASSOC);
   }
+
+  public function selectDataAll()
+  {
+    $res = $this->connection->prepare("SELECT * FROM employees");
+    $res->execute();
+    return $res->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public function deleteDataRegister(string $id)
+  {
+    $res = $this->connection->prepare("DELETE FROM employees WHERE id = :id");
+    $res->bindValue(":id", $id);
+    $res->execute();
+  }
 }

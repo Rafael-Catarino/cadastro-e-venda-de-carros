@@ -36,6 +36,9 @@
 }
 
 .generic_btn {
+  border-radius: 10px;
+  margin: 8px 0;
+  padding: 10px;
   background-color: var(--gray);
   border: none;
   color: var(--white);
