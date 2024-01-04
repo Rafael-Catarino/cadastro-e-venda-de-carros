@@ -3,12 +3,12 @@
 }
 
 .container_search h2 {
-  color: rgb(152, 151, 151);
+  color: var(--lightGray);
   margin: 8px;
 }
 
 .container_search form {
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.207);
+  box-shadow: 2px 2px 2px 2px var(--shaded);
   align-items: center;
   margin: auto;
   border: 1px solid #ccc;
@@ -28,14 +28,14 @@
 }
 
 .container_search button {
-  background-color: #222;
+  background-color: var(--gray);
   border: none;
-  color: #fff;
+  color: var(--white);
   border-radius: 8px;
   padding: 8px;
 }
 
 .container_search button:hover {
-  background-color: red;
+  background-color: var(--red);
   cursor: pointer;
 }

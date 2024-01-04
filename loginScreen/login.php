@@ -1,6 +1,12 @@
 <?php
-require_once "DataBaseLogin.php";
-$p = new DataBaseLogin("127.0.0.1", 'root', '', 'projeto_catarinoVeiculos');
+require "securityCode.php";
+require_once "DataBaseCollaborators.php";
+$p = new DataBaseCollaborators("127.0.0.1", 'root', '', 'projeto_catarinoVeiculos');
+$p->createTable();
+$verifica = $p->selectDataAll();
+if (!$verifica) {
+  $p->insertData("Rafael", "rafael@employees.com.br", "12345678", 1);
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +32,7 @@ $p = new DataBaseLogin("127.0.0.1", 'root', '', 'projeto_catarinoVeiculos');
 
   <main>
 
-    <sectio class="container_login login_enter">
+    <sectio class="genericForm">
 
       <h3>Login</h3>
 
@@ -34,13 +40,16 @@ $p = new DataBaseLogin("127.0.0.1", 'root', '', 'projeto_catarinoVeiculos');
       if (isset($_POST["submit"])) {
         $email = addslashes(strtolower($_POST["email"]));
         $password = $_POST["password"];
-        $res = $p->selectOneData($email, $password);
+        $res = $p->selectDataLogin($email, $password);
         if ($res) {
+          $key = createSecurityKey();
           session_start();
+          $_SESSION['numlogin'] = $key;
           $_SESSION['username'] = $res["name"];
-          header("Location:adminPage.php");
+          $_SESSION['access'] = $res["access"]; //0==restrito / 1==Total;
+          header("Location:adminPage.php?num=$key");
         } else {
-          echo "<p id='lgError'>Login Incorreto</p>";
+          echo "<p class='message'>Login Incorreto</p>";
         }
       }
       ?>
@@ -48,34 +57,14 @@ $p = new DataBaseLogin("127.0.0.1", 'root', '', 'projeto_catarinoVeiculos');
       <form action="login.php" method="post" name="f_login" id="f_login">
 
         <label for="email">E-mail: </label>
-        <input type="email" name="email" id="email" placeholder="Digite o seu E-mail">
+        <input type="email" name="email" id="email" placeholder="Digite o seu E-mail" required>
 
         <label for="password">Senha: </label>
-        <input type="password" name="password" id="password" placeholder="Digite a sua Senha">
+        <input type="password" name="password" id="password" placeholder="Digite a sua Senha" required>
 
-        <input type="submit" name="submit" value="ENTRAR" class="login_button">
+        <input type="submit" name="submit" value="ENTRAR" class="generic_btn">
       </form>
-      <span>Não tem cadastro? <button class="btn_register">Cadastre-se</button> </span>
-    </sectio>
 
-    <sectio class="container_login register">
-      <h3>Cadastre-se</h3>
-      <form action="#" method="post" name="" id="">
-        <label for="">Nome:</label>
-        <input type="text" name="name" id="name" placeholder="Digite o seu nome">
-
-        <label for="email-register">E-mail: </label>
-        <input type="email" name="email" id="email_register" placeholder="Digite o seu E-mail">
-
-        <label for="password">Senha: </label>
-        <input type="password" name="password" id="password-register" placeholder="Digite a sua Senha">
-
-        <label for="password">Repita sua Senha: </label>
-        <input type="password" name="password" id="password_register_repite" placeholder="Digite a sua Senha">
-
-        <input type="submit" value="CADASTRAR" class="register_button">
-      </form>
-      <span>Já tem uma conta? <button class="btn_login">Faça Login</button> </span>
     </sectio>
   </main>
 

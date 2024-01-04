@@ -1,8 +1,8 @@
 .container_header {
   align-items: center;
-  background-color: #000;
-  border-bottom: 1px solid red;
-  color: #fff;
+  background-color: var(--black);
+  border-bottom: 1px solid var(--red);
+  color: var(--white);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -23,7 +23,7 @@
 }
 
 .container_header li {
-  background-color: #222;
+  background-color: var(--gray);
   border-radius: 8px;
   list-style: none;
   margin: 0px 4px;
@@ -31,15 +31,15 @@
 }
 
 .container_header li:hover {
-  background-color: red;
+  background-color: var(--red);
 }
 
 .container_header .login_header {
-  border-left: 2px solid red;
+  border-left: 2px solid var(--red);
 }
 
 .container_header a {
-  color: #fff;
+  color: var(--white);
   font-size: small;
   padding: 8px;
   text-decoration: none;
