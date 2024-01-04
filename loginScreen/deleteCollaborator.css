@@ -23,6 +23,11 @@
   padding: 4px;
 }
 
+.conatinerTableDeleteCollaborator p {
+  color: red;
+  margin: 4px;
+}
+
 .conatinerFormDeleteCollaborator form {
   text-align: center;
   width: 500px;

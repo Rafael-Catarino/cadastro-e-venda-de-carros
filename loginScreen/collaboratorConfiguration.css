@@ -1,0 +1,64 @@
+.collaboratorConfiguration {
+  text-align: center;
+  margin: 12px;
+}
+
+.collaboratorConfiguration h1 {
+  margin-bottom: 4px;
+}
+
+.collaboratorConfiguration table {
+  border: 1px solid black;
+  margin: 0 auto;
+}
+
+.collaboratorConfiguration th {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.collaboratorConfiguration td {
+  border: 1px solid black;
+  padding: 4px;
+}
+
+.collaboratorConfiguration button {
+  background-color: transparent;
+  border: none;
+}
+
+.collaboratorConfiguration img {
+  width: 20px;
+}
+
+.collaboratorConfiguration form div {
+  margin: 12px;
+}
+
+.collaboratorConfiguration .input_form {
+  border-radius: 5px;
+  padding: 4px;
+}
+
+.collaboratorConfiguration a {
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.collaboratorConfiguration p {
+  color: red;
+  margin: 4px;
+}
+
+.btn_update {
+  border-radius: 10px;
+  margin: 8px;
+  padding: 10px;
+  background-color: var(--gray);
+  border: none;
+  color: var(--white);
+}
+
+.btn_update:hover {
+  background-color: var(--red);
+}

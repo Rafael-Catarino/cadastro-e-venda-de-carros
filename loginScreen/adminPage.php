@@ -59,10 +59,10 @@ if (isset($_SESSION["numlogin"])) {
           ?>
 
             <li class="menu_admin_li">
-              <button>USUARIOS</button>
+              <button>USUÁRIOS</button>
               <div>
                 <a href="./newCollaborator.php?num=<?php echo $_GET["num"]; ?>" target="_self">novo</a>
-                <a href="#" target="_self">editar</a>
+                <a href="./collaboratorConfiguration.php?num=<?php echo $_GET["num"]; ?>" target="_self">editar</a>
                 <a href="./deleteCollaborator.php?num=<?php echo $_GET["num"]; ?>" target="_self">excluir</a>
               </div>
             </li>

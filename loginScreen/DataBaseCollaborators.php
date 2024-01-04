@@ -70,9 +70,28 @@ class DataBaseCollaborators
     return $res->fetchAll(PDO::FETCH_ASSOC);
   }
 
+  public function selectDataRegisterById($id)
+  {
+    $res = $this->connection->prepare("SELECT * FROM employees WHERE id=:id");
+    $res->bindValue(":id", $id);
+    $res->execute();
+    return $res->fetch(PDO::FETCH_ASSOC);
+  }
+
   public function deleteDataRegister(string $id)
   {
     $res = $this->connection->prepare("DELETE FROM employees WHERE id = :id");
+    $res->bindValue(":id", $id);
+    $res->execute();
+  }
+
+  public function updataRegister($id, string $name, string $email, string $password, string $access)
+  {
+    $res = $this->connection->prepare("UPDATE employees SET name = :n, email = :e, password = :p, access = :a WHERE id = :id");
+    $res->bindValue(":n", $name);
+    $res->bindValue(":e", $email);
+    $res->bindValue(":p", $password);
+    $res->bindValue(":a", $access);
     $res->bindValue(":id", $id);
     $res->execute();
   }

@@ -23,9 +23,9 @@ if (isset($_SESSION["numlogin"])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../components/header/header.css">
   <link rel="stylesheet" href="../components/footer/footer.css">
-  <link rel="stylesheet" href="./genericForm.css">
+  <link rel="stylesheet" href="./newCollaborator.css">
   <link rel="stylesheet" href="../reset.css">
-  <title>Cadastro de funcionário</title>
+  <title>Cadastro de Usuários</title>
 </head>
 
 <body>
@@ -36,15 +36,15 @@ if (isset($_SESSION["numlogin"])) {
   </header>
 
   <main>
-    <section class="genericForm">
+    <section class="newCollaborator">
       <h3>Novo de Usuário</h3>
 
       <?php
       if (isset($_GET["btn_form"])) {
-        $userName = strtoupper($_GET["username"]);
-        $userEmail = strtolower($_GET["user_email"]);
-        $userPassword = $_GET["user_password"];
-        $userAccess = $_GET["user_access"];
+        $userName = addslashes(ucfirst($_GET["username"]));
+        $userEmail = addslashes(strtolower($_GET["user_email"]));
+        $userPassword = addslashes($_GET["user_password"]);
+        $userAccess = addslashes($_GET["user_access"]);
         $res = $c->selectDataRegister($userName, $userEmail, $userPassword, $userAccess);
         if ($res) {
           echo "<p class=message>Funcionário já cadastrado tente outro</p>";
@@ -59,21 +59,37 @@ if (isset($_SESSION["numlogin"])) {
 
         <input type="hidden" name="num" value="<?php echo $_GET["num"]; ?>">
 
-        <label for="username">Nome:</label>
-        <input type="text" id="username" name="username" maxlength="30" size="30" placeholder="Nome" required>
+        <div>
+          <label for="username">Nome:</label>
+          <input class="input_form" type="text" id="username" name="username" maxlength="30" size="30" placeholder="Nome" required value="<?php if (isset($_GET["btn_form"])) {
+                                                                                                                                            echo $userName;
+                                                                                                                                          } ?>">
+        </div>
 
-        <label for="user_email">E-mail:</label>
-        <input type="email" id="user_email" name="user_email" maxlength="30" size="30" placeholder="E-mail" required>
+        <div>
+          <label for="user_email">E-mail:</label>
+          <input class="input_form" type="email" id="user_email" name="user_email" maxlength="30" size="30" placeholder="E-mail" required value="<?php if (isset($_GET["btn_form"])) {
+                                                                                                                                                    echo $userEmail;
+                                                                                                                                                  } ?>">
+        </div>
 
-        <label for="user_password">Senha:</label>
-        <input type="password" id="user_password" name="user_password" maxlength="30" placeholder="Senha" size="30" required>
+        <div>
+          <label for="user_password">Senha:</label>
+          <input class="input_form" type="password" id="user_password" name="user_password" maxlength="30" placeholder="Senha" size="30" required value="<?php if (isset($_GET["btn_form"])) {
+                                                                                                                                                            echo $userPassword;
+                                                                                                                                                          } ?>">
+        </div>
 
-        <label for="user_access">Acesso:</label>
-        <input type="text" id="user_access" name="user_access" maxlength="1" size="1" pattern="[0-1]+$" placeholder="0 ou 1" required>
+        <div>
+          <label for="user_access">Acesso:</label>
+          <input class="input_form" type="text" id="user_access" name="user_access" maxlength="1" size="1" pattern="[0-1]+$" placeholder="0 ou 1" required value="<?php if (isset($_GET["btn_form"])) {
+                                                                                                                                                                    echo $userAccess;
+                                                                                                                                                                  } ?>">
+        </div>
 
-        <input type="submit" name="btn_form" value="Cadastar" class="generic_btn">
+        <input class="btn_insert" type="submit" name="btn_form" value="Cadastar">
 
-        <a href="adminPage.php?num=<?php echo $_GET["num"]; ?>">Voltar</a>
+        <a class="btn_insert" href="adminPage.php?num=<?php echo $_GET["num"]; ?>">Voltar</a>
 
       </form>
     </section>

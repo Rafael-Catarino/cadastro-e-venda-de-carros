@@ -52,11 +52,12 @@ if (isset($_SESSION["numlogin"])) {
         if (isset($_GET["btn_form"])) {
           $id = $_GET["id"];
           $c->deleteDataRegister($id);
+          echo "<p> Cadastro excluido </p>";
           $res = $c->selectDataAll();
           for ($i = 0; $i < count($res); $i++) {
             echo "<tr>";
             foreach ($res[$i] as $key => $value) {
-              echo "<td> {$value} </td>";
+              echo "<td> {$value}</td>";
             }
             echo "</ tr>";
           }
@@ -65,7 +66,7 @@ if (isset($_SESSION["numlogin"])) {
           for ($i = 0; $i < count($res); $i++) {
             echo "<tr>";
             foreach ($res[$i] as $key => $value) {
-              echo "<td> {$value} </td>";
+              echo "<td> {$value}</td>";
             }
             echo "</ tr>";
           }
@@ -80,10 +81,12 @@ if (isset($_SESSION["numlogin"])) {
       <form action="deleteCollaborator.php" method="get">
         <div>
           <input type="hidden" name="num" value="<?php echo $_GET["num"]; ?>">
-          <label for="number_id">ID do Usuário que vai ser Excluido:</label>
+          <label for="number_id">ID do usuário que vai ser excluido:</label>
           <input type="number" name="id" id="number_id" class="input_id">
         </div>
+
         <input name="btn_form" type="submit" value="Excluir" class="btn_delete">
+
         <a href="adminPage.php?num=<?php echo $_GET["num"]; ?>" class="btn_delete">Voltar</a>
       </form>
     </section>

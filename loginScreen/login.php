@@ -2,6 +2,11 @@
 require "securityCode.php";
 require_once "DataBaseCollaborators.php";
 $p = new DataBaseCollaborators("127.0.0.1", 'root', '', 'projeto_catarinoVeiculos');
+$p->createTable();
+$verifica = $p->selectDataAll();
+if (!$verifica) {
+  $p->insertData("Rafael", "rafael@employees.com.br", "12345678", 1);
+}
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +18,7 @@ $p = new DataBaseCollaborators("127.0.0.1", 'root', '', 'projeto_catarinoVeiculo
   <title>Faça o seu Login</title>
   <link rel="stylesheet" href="../components/header/header.css">
   <link rel="stylesheet" href="../components/footer/footer.css">
-  <link rel="stylesheet" href="./genericForm.css">
+  <link rel="stylesheet" href="./login.css">
   <link rel="stylesheet" href="../index.css">
   <link rel="stylesheet" href="../reset.css">
 </head>
