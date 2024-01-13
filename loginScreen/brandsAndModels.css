@@ -1,0 +1,41 @@
+.container_brandsAndModels {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 12px;
+}
+
+.container_brandsAndModels h3 {
+  margin-bottom: 4px;
+}
+
+.container_brandsAndModels .conatainer_form {
+  border: 5px solid #888;
+  border-radius: 10px;
+  padding: 12px;
+  background-color: #bbb;
+  width: 335px;
+  margin-bottom: 8px;
+}
+
+.container_brandsAndModels form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 10px;
+  width: 300px;
+  background-color: #fff;
+}
+
+.conatainer_form label {
+  margin: 4px;
+}
+
+.container_brandsAndModels a {
+  margin-top: 5px;
+  text-decoration: none;
+  font-size: 13px;
+}

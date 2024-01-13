@@ -13,3 +13,23 @@
   --lightGray: rgb(152, 151, 151);
   --shaded: rgba(0, 0, 0, 0.207);
 }
+
+.btn_generic {
+  border-radius: 10px;
+  margin: 8px;
+  padding: 8px 12px;
+  background-color: var(--gray);
+  border: none;
+  color: var(--white);
+}
+
+.btn_generic:hover {
+  background-color: var(--red);
+  cursor: pointer;
+}
+
+.input_form_generic {
+  border-radius: 5px;
+  padding: 4px;
+  width: 200px;
+}

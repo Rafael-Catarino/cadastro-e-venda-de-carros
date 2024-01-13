@@ -43,7 +43,8 @@ if (isset($_SESSION["numlogin"])) {
               <a href="#" target="_self">novo</a>
               <a href="#" target="_self">editar</a>
               <a href="#" target="_self">exclir</a>
-              <a href="#" target="_self">marcas</a>
+              <a href="./brandsAndModels.php?num=<?php echo $_GET["num"] ?>" target="_self">marcas /<br>
+                modelos</a>
             </div>
           </li>
 

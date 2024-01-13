@@ -1,5 +1,5 @@
 <?php
-require_once "DataBaseCollaborators.php";
+require_once "../Database/Collaborators.php";
 $c = new DataBaseCollaborators("127.0.0.1", "root", "", "projeto_catarinoVeiculos");
 
 session_start();
@@ -93,43 +93,43 @@ if (isset($_SESSION["numlogin"])) {
       <input type="hidden" name="num" value="<?php echo $_GET['num']; ?>">
       <div>
         <label for="username">Nome:</label>
-        <input class="input_form" type="text" name="username" id="username" value="<?php if (isset($person)) {
-                                                                                      echo $person["name"];
-                                                                                    } else if (isset($_GET["btn_updata"])) {
-                                                                                      echo $userName;
-                                                                                    } ?>">
+        <input class="input_form_generic" type="text" name="username" id="username" value="<?php if (isset($person)) {
+                                                                                              echo $person["name"];
+                                                                                            } else if (isset($_GET["btn_updata"])) {
+                                                                                              echo $userName;
+                                                                                            } ?>">
       </div>
 
       <div>
         <label for="user_email">E-mail:</label>
-        <input class="input_form" type="email" name="user_email" id="user_email" value="<?php if (isset($person)) {
-                                                                                          echo $person["email"];
-                                                                                        } else if (isset($_GET["btn_updata"])) {
-                                                                                          echo $userEmail;
-                                                                                        } ?>">
+        <input class="input_form_generic" type="email" name="user_email" id="user_email" value="<?php if (isset($person)) {
+                                                                                                  echo $person["email"];
+                                                                                                } else if (isset($_GET["btn_updata"])) {
+                                                                                                  echo $userEmail;
+                                                                                                } ?>">
       </div>
 
       <div>
         <label for="password">Senha:</label>
-        <input class="input_form" type="text" name="password" id="password" value="<?php if (isset($person)) {
-                                                                                      echo $person["password"];
-                                                                                    } else if (isset($_GET["btn_updata"])) {
-                                                                                      echo $password;
-                                                                                    } ?>">
+        <input class="input_form_generic" type="text" name="password" id="password" value="<?php if (isset($person)) {
+                                                                                              echo $person["password"];
+                                                                                            } else if (isset($_GET["btn_updata"])) {
+                                                                                              echo $password;
+                                                                                            } ?>">
       </div>
 
       <div>
         <label for="user_access">Acesso:</label>
-        <input class="input_form" type="number" name="user_access" id="user_access" value="<?php if (isset($person)) {
-                                                                                              echo $person["access"];
-                                                                                            } else if (isset($_GET["btn_updata"])) {
-                                                                                              echo $userAccess;
-                                                                                            } ?>">
+        <input class="input_form_generic" type="number" name="user_access" id="user_access" value="<?php if (isset($person)) {
+                                                                                                      echo $person["access"];
+                                                                                                    } else if (isset($_GET["btn_updata"])) {
+                                                                                                      echo $userAccess;
+                                                                                                    } ?>">
       </div>
 
-      <input class="btn_update" type="submit" value="Alterar" name="btn_updata">
+      <input class="btn_generic" type="submit" value="Alterar" name="btn_updata">
 
-      <a class="btn_update" href="./adminPage.php?num=<?php echo $_GET["num"]; ?>">Voltar</a>
+      <a class="btn_generic" href="./adminPage.php?num=<?php echo $_GET["num"]; ?>">Voltar</a>
 
     </form>
 
