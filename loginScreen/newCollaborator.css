@@ -13,12 +13,6 @@
   margin: 12px;
 }
 
-.newCollaborator .input_form {
-  border-radius: 5px;
-  padding: 4px;
-  width: 200px;
-}
-
 .newCollaborator a {
   text-decoration: none;
   font-size: 13px;
@@ -27,17 +21,4 @@
 .newCollaborator p {
   color: red;
   margin: 4px;
-}
-
-.btn_insert {
-  border-radius: 10px;
-  margin: 8px;
-  padding: 10px;
-  background-color: var(--gray);
-  border: none;
-  color: var(--white);
-}
-
-.btn_insert:hover {
-  background-color: var(--red);
 }

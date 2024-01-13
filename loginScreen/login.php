@@ -1,6 +1,6 @@
 <?php
 require "securityCode.php";
-require_once "DataBaseCollaborators.php";
+require_once "../Database/Collaborators.php";
 $p = new DataBaseCollaborators("127.0.0.1", 'root', '', 'projeto_catarinoVeiculos');
 $p->createTable();
 $verifica = $p->selectDataAll();

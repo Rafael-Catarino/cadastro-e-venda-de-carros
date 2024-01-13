@@ -1,5 +1,5 @@
 <?php
-require_once "DataBaseCollaborators.php";
+require_once "../Database/Collaborators.php";
 $c = new DataBaseCollaborators("127.0.0.1", "root", "", "projeto_catarinoVeiculos");
 
 session_start();
@@ -21,11 +21,11 @@ if (isset($_SESSION["numlogin"])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../reset.css">
-  <link rel="stylesheet" href="./genericForm.css">
+  <link rel="stylesheet" href="../../reset.css">
+  <link rel="stylesheet" href="../genericForm.css">
   <link rel="stylesheet" href="./deleteCollaborator.css">
-  <link rel="stylesheet" href="../components/header/header.css">
-  <link rel="stylesheet" href="../components/footer/footer.css">
+  <link rel="stylesheet" href="../../components/header/header.css">
+  <link rel="stylesheet" href="../../components/footer/footer.css">
   <title>Deletar Funcionário</title>
 </head>
 
@@ -82,12 +82,12 @@ if (isset($_SESSION["numlogin"])) {
         <div>
           <input type="hidden" name="num" value="<?php echo $_GET["num"]; ?>">
           <label for="number_id">ID do usuário que vai ser excluido:</label>
-          <input type="number" name="id" id="number_id" class="input_id">
+          <input class="input_form_generic input_id" type="number" name="id" id="number_id">
         </div>
 
-        <input name="btn_form" type="submit" value="Excluir" class="btn_delete">
+        <input name="btn_form" type="submit" value="Excluir" class="btn_generic">
 
-        <a href="adminPage.php?num=<?php echo $_GET["num"]; ?>" class="btn_delete">Voltar</a>
+        <a href="adminPage.php?num=<?php echo $_GET["num"]; ?>" class="btn_generic">Voltar</a>
       </form>
     </section>
 

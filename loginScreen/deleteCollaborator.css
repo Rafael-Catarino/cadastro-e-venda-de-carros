@@ -38,25 +38,11 @@
   margin: 12px;
 }
 
-.input_id {
+.conatinerFormDeleteCollaborator .input_id {
   width: 50px;
-  border-radius: 5px;
 }
 
 a {
   text-decoration: none;
   font-size: 13px;
-}
-
-.btn_delete {
-  border-radius: 10px;
-  margin: 8px;
-  padding: 10px;
-  background-color: var(--gray);
-  border: none;
-  color: var(--white);
-}
-
-.btn_delete:hover {
-  background-color: var(--red);
 }
