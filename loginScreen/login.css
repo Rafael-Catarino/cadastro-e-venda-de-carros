@@ -59,9 +59,3 @@
 .genericForm a:hover {
   color: var(--red);
 }
-
-.message {
-  font-size: smaller;
-  color: var(--red);
-  padding-bottom: 8px;
-}

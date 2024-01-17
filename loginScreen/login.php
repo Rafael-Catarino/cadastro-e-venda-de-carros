@@ -1,7 +1,7 @@
 <?php
 require "securityCode.php";
-require_once "../Database/Collaborators.php";
-$p = new DataBaseCollaborators("127.0.0.1", 'root', '', 'projeto_catarinoVeiculos');
+require_once "../Database/TB_collaborators.php";
+$p = new Collaborators("127.0.0.1", 'root', '', 'projeto_catarinoVeiculos');
 $p->createTable();
 $verifica = $p->selectDataAll();
 if (!$verifica) {
@@ -57,7 +57,9 @@ if (!$verifica) {
       <form action="login.php" method="post" name="f_login" id="f_login">
 
         <label for="email">E-mail: </label>
-        <input type="email" name="email" id="email" placeholder="Digite o seu E-mail" required>
+        <input type="email" name="email" id="email" placeholder="Digite o seu E-mail" value="<?php if (isset($_POST['submit'])) {
+                                                                                                echo $_POST['email'];
+                                                                                              } ?>" required>
 
         <label for="password">Senha: </label>
         <input type="password" name="password" id="password" placeholder="Digite a sua Senha" required>

@@ -1,6 +1,6 @@
 <?php
 
-class DataBaseCollaborators
+class Collaborators
 {
   private $connection;
 

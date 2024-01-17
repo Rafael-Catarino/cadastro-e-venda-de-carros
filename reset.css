@@ -33,3 +33,9 @@
   padding: 4px;
   width: 200px;
 }
+
+.message {
+  font-size: smaller;
+  color: var(--red);
+  padding-bottom: 8px;
+}

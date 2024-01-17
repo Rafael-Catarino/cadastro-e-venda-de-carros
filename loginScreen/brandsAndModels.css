@@ -19,6 +19,14 @@
   margin-bottom: 8px;
 }
 
+.container_form_add {
+  display: none;
+}
+
+.container_form_delete {
+  display: none;
+}
+
 .container_brandsAndModels form {
   display: flex;
   flex-direction: column;

@@ -1,6 +1,6 @@
 <?php
-require_once "../Database/Collaborators.php";
-$c = new DataBaseCollaborators("127.0.0.1", "root", "", "projeto_catarinoVeiculos");
+require_once "../Database/TB_collaborators.php";
+$c = new Collaborators("127.0.0.1", "root", "", "projeto_catarinoVeiculos");
 
 session_start();
 if (isset($_SESSION["numlogin"])) {
@@ -61,38 +61,30 @@ if (isset($_SESSION["numlogin"])) {
 
         <div>
           <label for="username">Nome:</label>
-          <input class="input_form_generic" type="text" id="username" name="username" maxlength="30" size="30"
-            placeholder="Nome" required
-            value="<?php if (isset($_GET["btn_form"])) {
-                                                                                                                                            echo $userName;
-                                                                                                                                          } ?>">
-        </div>
-
-        <div>
-          <label for="user_email">E-mail:</label>
-          <input class="input_form_generic" type="email" id="user_email" name="user_email" maxlength="30" size="30"
-            placeholder="E-mail" required
-            value="<?php if (isset($_GET["btn_form"])) {
-                                                                                                                                                    echo $userEmail;
+          <input class="input_form_generic" type="text" id="username" name="username" maxlength="30" size="30" placeholder="Nome" required value="<?php if (isset($_GET["btn_form"])) {
+                                                                                                                                                    echo $userName;
                                                                                                                                                   } ?>">
         </div>
 
         <div>
-          <label for="user_password">Senha:</label>
-          <input class="input_form_generic" type="password" id="user_password" name="user_password" maxlength="30"
-            placeholder="Senha" size="30" required
-            value="<?php if (isset($_GET["btn_form"])) {
-                                                                                                                                                            echo $userPassword;
+          <label for="user_email">E-mail:</label>
+          <input class="input_form_generic" type="email" id="user_email" name="user_email" maxlength="30" size="30" placeholder="E-mail" required value="<?php if (isset($_GET["btn_form"])) {
+                                                                                                                                                            echo $userEmail;
                                                                                                                                                           } ?>">
         </div>
 
         <div>
-          <label for="user_access">Acesso:</label>
-          <input class="input_form_generic" type="text" id="user_access" name="user_access" maxlength="1" size="1"
-            pattern="[0-1]+$" placeholder="0 ou 1" required
-            value="<?php if (isset($_GET["btn_form"])) {
-                                                                                                                                                                    echo $userAccess;
+          <label for="user_password">Senha:</label>
+          <input class="input_form_generic" type="password" id="user_password" name="user_password" maxlength="30" placeholder="Senha" size="30" required value="<?php if (isset($_GET["btn_form"])) {
+                                                                                                                                                                    echo $userPassword;
                                                                                                                                                                   } ?>">
+        </div>
+
+        <div>
+          <label for="user_access">Acesso:</label>
+          <input class="input_form_generic" type="text" id="user_access" name="user_access" maxlength="1" size="1" pattern="[0-1]+$" placeholder="0 ou 1" required value="<?php if (isset($_GET["btn_form"])) {
+                                                                                                                                                                            echo $userAccess;
+                                                                                                                                                                          } ?>">
         </div>
 
         <input class="btn_generic" type="submit" name="btn_form" value="Cadastar">

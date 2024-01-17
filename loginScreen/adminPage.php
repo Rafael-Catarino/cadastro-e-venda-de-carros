@@ -59,14 +59,14 @@ if (isset($_SESSION["numlogin"])) {
           if ($_SESSION['access'] == 1) {
           ?>
 
-            <li class="menu_admin_li">
-              <button>USUÁRIOS</button>
-              <div>
-                <a href="./newCollaborator.php?num=<?php echo $_GET["num"]; ?>" target="_self">novo</a>
-                <a href="./collaboratorConfiguration.php?num=<?php echo $_GET["num"]; ?>" target="_self">editar</a>
-                <a href="./deleteCollaborator.php?num=<?php echo $_GET["num"]; ?>" target="_self">excluir</a>
-              </div>
-            </li>
+          <li class="menu_admin_li">
+            <button>USUÁRIOS</button>
+            <div>
+              <a href="./newCollaborator.php?num=<?php echo $_GET["num"]; ?>" target="_self">novo</a>
+              <a href="./collaboratorConfiguration.php?num=<?php echo $_GET["num"]; ?>" target="_self">editar</a>
+              <a href="./deleteCollaborator.php?num=<?php echo $_GET["num"]; ?>" target="_self">excluir</a>
+            </div>
+          </li>
 
           <?php
           };
@@ -90,7 +90,7 @@ if (isset($_SESSION["numlogin"])) {
     ?>
   </footer>
 
-  <script src="./script_menuAdminPage.js"></script>
+  <script src="./adminPage.js"></script>
 </body>
 
 </html>

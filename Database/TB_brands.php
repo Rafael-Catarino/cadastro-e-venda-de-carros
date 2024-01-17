@@ -1,5 +1,5 @@
 <?php
-class TB_brands
+class Brand
 {
   private $connection;
 
@@ -25,7 +25,7 @@ class TB_brands
     $res->execute();
   }
 
-  public function insertData(string $brand)
+  public function insertDataBrand(string $brand)
   {
     try {
       $res = $this->connection->prepare("INSERT INTO tb_brands (brand) value(:b)");
@@ -36,7 +36,7 @@ class TB_brands
     }
   }
 
-  public function selectDataInsert(string $brand)
+  public function selectDataInsertBrand(string $brand)
   {
     $res = $this->connection->prepare("SELECT * FROM tb_brands WHERE brand = :b");
     $res->bindValue(":b", $brand);
@@ -44,10 +44,17 @@ class TB_brands
     return $res->fetch(PDO::FETCH_ASSOC);
   }
 
-  public function selectDataAll()
+  public function selectDataAllBrand()
   {
     $res = $this->connection->prepare("SELECT * FROM tb_brands ORDER BY brand");
     $res->execute();
     return $res->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public function deleteDataBrand(int $id_brand)
+  {
+    $res = $this->connection->prepare("DELETE FROM tb_brands WHERE id_brand = :id_brand");
+    $res->bindValue(":id_brand", $id_brand);
+    $res->execute();
   }
 }

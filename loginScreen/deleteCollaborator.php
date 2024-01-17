@@ -1,6 +1,6 @@
 <?php
-require_once "../Database/Collaborators.php";
-$c = new DataBaseCollaborators("127.0.0.1", "root", "", "projeto_catarinoVeiculos");
+require_once "../Database/TB_collaborators.php";
+$c = new Collaborators("127.0.0.1", "root", "", "projeto_catarinoVeiculos");
 
 session_start();
 if (isset($_SESSION["numlogin"])) {
