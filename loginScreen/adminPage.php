@@ -33,17 +33,17 @@ if (isset($_SESSION["numlogin"])) {
 
   <main>
     <section class="container_login_screen">
-      <p>Menu principal de gerenciamento </p>
+      <h1>Menu principal de gerenciamento </h1>
 
       <nav class="menu_admin">
         <ul>
           <li class="menu_admin_li">
             <button>CARROS</button>
             <div>
-              <a href="#" target="_self">novo</a>
+              <a href="./newCar.php?num=<?php echo $_GET["num"]; ?>" target="_self">novo</a>
               <a href="#" target="_self">editar</a>
               <a href="#" target="_self">exclir</a>
-              <a href="./brandsAndModels.php?num=<?php echo $_GET["num"] ?>" target="_self">marcas /<br>
+              <a href="./brandsAndModels.php?num=<?php echo $_GET["num"]; ?>" target="_self">marcas /<br>
                 modelos</a>
             </div>
           </li>
@@ -59,14 +59,14 @@ if (isset($_SESSION["numlogin"])) {
           if ($_SESSION['access'] == 1) {
           ?>
 
-          <li class="menu_admin_li">
-            <button>USUÁRIOS</button>
-            <div>
-              <a href="./newCollaborator.php?num=<?php echo $_GET["num"]; ?>" target="_self">novo</a>
-              <a href="./collaboratorConfiguration.php?num=<?php echo $_GET["num"]; ?>" target="_self">editar</a>
-              <a href="./deleteCollaborator.php?num=<?php echo $_GET["num"]; ?>" target="_self">excluir</a>
-            </div>
-          </li>
+            <li class="menu_admin_li">
+              <button>USUÁRIOS</button>
+              <div>
+                <a href="./newCollaborator.php?num=<?php echo $_GET["num"]; ?>" target="_self">novo</a>
+                <a href="./collaboratorConfiguration.php?num=<?php echo $_GET["num"]; ?>" target="_self">editar</a>
+                <a href="./deleteCollaborator.php?num=<?php echo $_GET["num"]; ?>" target="_self">excluir</a>
+              </div>
+            </li>
 
           <?php
           };

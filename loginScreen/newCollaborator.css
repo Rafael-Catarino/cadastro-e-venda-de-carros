@@ -2,11 +2,10 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin: 12px;
 }
 
-.newCollaborator h3 {
-  margin-bottom: 4px;
+.newCollaborator h1 {
+  margin: 24px;
 }
 
 .newCollaborator form div {

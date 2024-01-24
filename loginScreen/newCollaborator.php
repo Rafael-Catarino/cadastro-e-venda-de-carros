@@ -5,7 +5,6 @@ $c = new Collaborators("127.0.0.1", "root", "", "projeto_catarinoVeiculos");
 session_start();
 if (isset($_SESSION["numlogin"])) {
   if ($_SESSION["numlogin"] != $_GET["num"]) {
-    echo $_SESSION["numlogin"];
     echo "<p>Login não efetuado</p>";
     exit;
   }
@@ -37,7 +36,7 @@ if (isset($_SESSION["numlogin"])) {
 
   <main>
     <section class="newCollaborator">
-      <h3>Novo de Usuário</h3>
+      <h1>Novo de Usuário</h1>
 
       <?php
       if (isset($_GET["btn_form"])) {

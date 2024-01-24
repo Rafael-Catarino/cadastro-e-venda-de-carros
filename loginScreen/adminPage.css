@@ -2,12 +2,10 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin: 12px;
 }
 
-.container_login_screen p {
-  margin: 12px;
-  font-weight: bold;
+.container_login_screen h1 {
+  margin: 24px;
 }
 
 .menu_admin {

@@ -1,7 +1,7 @@
 <?php
 require "securityCode.php";
 require_once "../Database/TB_collaborators.php";
-$p = new Collaborators("127.0.0.1", 'root', '', 'projeto_catarinoVeiculos');
+$p = new Collaborators('127.0.0.1', 'root', '', 'projeto_catarinoVeiculos');
 $p->createTable();
 $verifica = $p->selectDataAll();
 if (!$verifica) {
