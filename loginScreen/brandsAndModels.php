@@ -156,7 +156,7 @@ if (isset($_SESSION["numlogin"])) {
         </form>
         <form action="./brandsAndModels.php" method="get">
           <input type="hidden" name="num" value="<?php echo $_GET["num"]; ?>">
-          <label for="model">Selecione uma modelo:</label>
+          <label for="model">Selecione um modelo:</label>
           <select name="id_model" id="model" required>
             <option value=""></option>
             <!-- Preenxendo o select com os modelos dinamicamente com o PHP -->

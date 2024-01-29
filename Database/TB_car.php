@@ -42,7 +42,7 @@ class Car
 
   public function insertCar($id_brand, $id_model, $version, $yearOfManufacture, $modelYear, $observation, $value, $photo1, $photo2, $miniature1, $miniature2, $optional1, $optional2, $optional3, $sold, $blocked)
   {
-    $res = $this->connection->prepare("INSERT INT tb_car(id_brand, id_model, version, yearOfManufacture, modelYear, observation, value, photo1, photo2, miniature1, miniature2, optional1, optional2, optional3, sold, blocked) VALUE (:id_brand, :id_model, :version, :yearOfManufacture, :modelYear, :observation, :value, :photo1, :photo2, :miniature1, :miniature2, :optional1, :optional2, :optional3, :sold, :blocked) ");
+    $res = $this->connection->prepare("INSERT INTO tb_car(id_brand, id_model, version, yearOfManufacture, modelYear, observation, value, photo1, photo2, miniature1, miniature2, optional1, optional2, optional3, sold, blocked) VALUE (:id_brand, :id_model, :version, :yearOfManufacture, :modelYear, :observation, :value, :photo1, :photo2, :miniature1, :miniature2, :optional1, :optional2, :optional3, :sold, :blocked) ");
     $res->bindValue(":id_brand", $id_brand);
     $res->bindValue(":id_model", $id_model);
     $res->bindValue(":version", $version);

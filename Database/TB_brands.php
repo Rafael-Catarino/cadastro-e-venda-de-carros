@@ -32,7 +32,7 @@ class Brand
       $res->bindValue(":b", $brand);
       $res->execute();
     } catch (PDOException $e) {
-      echo "<p>Erro ao gravar novo funcionário.</p>" . $e->getMessage();
+      echo "<p>Erro ao gravar nova marca.</p>" . $e->getMessage();
     }
   }
 

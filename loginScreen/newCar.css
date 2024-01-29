@@ -40,10 +40,32 @@
 .container_newCar .div_photograph {
   margin-top: 8px;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .container_newCar .label_photograph {
+  border: 1px solid var(--black);
+  background-color: var(--white);
+  border-radius: 5px;
+  padding: 8px;
+  width: 200px;
   font-weight: lighter;
   font-size: small;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label_photograph :nth-child(2) {
+  background-color: var(--black);
+  color: var(--white);
+  padding: 4px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.label_photograph :nth-child(1) {
+  width: 106px;
+  overflow: hidden;
 }

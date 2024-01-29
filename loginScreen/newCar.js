@@ -10,3 +10,14 @@ valueSelectBrand.addEventListener("change", () => {
     }
   });
 });
+
+// Muda dinamicamente o nome da imagem no input file.
+document.querySelector("#photograph1").addEventListener("change", (event) => {
+  document.querySelector(".label_photograph1").textContent =
+    event.target.files[0].name;
+});
+
+document.querySelector("#photograph2").addEventListener("change", (event) => {
+  document.querySelector(".label_photograph2").textContent =
+    event.target.files[0].name;
+});

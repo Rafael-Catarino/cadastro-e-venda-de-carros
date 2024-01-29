@@ -49,19 +49,99 @@ if (isset($_SESSION["numlogin"])) {
 
     <h2>Cadastre um novo carro.</h2>
 
+    <!-- submetendo um novo carro ao banco de dados -->
     <?php
     if (isset($_POST["btn-form"])) {
+
+      //Faz o upload de uma imagem.
+      $arrPhoto = array();
+      $arrMini = array();
+
+      $validatePhoto = 1;
+
+      $dir = "../imgCar/";
+
       for ($i = 0; $i < 2; $i++) {
+
+        // A função isset determina se uma variavel está declarada e é diferente de null.
         if (isset($_FILES["photograph" . ($i + 1)]["name"])) {
+
           if ($_FILES["photograph" . ($i + 1)]["name"] != "") {
+
+            // A função strtolower() converte todos os caracteres alfabéticos ASCII em minúsculas.
+            // A função substr() Retorna a parte de string especificada pelo parâmetro offset e length.
             $ex = strtolower(substr($_FILES["photograph" . ($i + 1)]["name"], -4));
-            if ($ex == "jpeg") {
-              $ex = ".jpeg";
+
+            if ($ex == ".jpg" or $ex == "jpeg") {
+
+              if ($ex == "jpeg") {
+                $ex = ".jpeg";
+              }
+
+              // A função uniqid() obtém um identificador(nome) exclusivo prefixado com base na hora atual em microssegundos.
+              $newName = uniqid() . $ex;
+
+              // A função move_uploaded_file() verifica se o arquivo designado por from é um arquivo válido (o que significa que foi carregado através do mecanismo de upload HTTP POST do PHP).Se o arquivo for válido, ele será movido para o nome de arquivo fornecido por to.
+              move_uploaded_file($_FILES["photograph" . ($i + 1)]["tmp_name"], $dir . $newName);
+
+              // Criando as miniaturas das imagens.
+
+              // A função list() atribui cada elemento de um array a uma variavel criada pela list().
+              // A função getimagesize() retorna um array com as dimenções de uma imagem, seu tipo e uma string de texto de altura/largura a ser usada dentro de uma tag HTML IMG normal.
+              list($width, $height, $type) = getimagesize($dir . $newName);
+
+              // A função imagecreatefromjpeg() retorna um identificador de imagem que representa a imagem obtida de um determinado nome de arquivo.
+              $image = imagecreatefromjpeg($dir . $newName);
+
+              // A função imagecreatetruecolor() retorna um objeto de imagem representando uma imagem preta do tamanho especificado.
+              $thumb = imagecreatetruecolor(117, 80);
+
+              // A função imagecopyresampled() copia uma parte retangular de uma imagem para outra imagem, interpolando suavemente os valores dos pixels para que, em particular, a redução do tamanho de uma imagem ainda retenha uma grande clareza.
+              imagecopyresampled($thumb, $image, 0, 0, 0, 0, 117, 80, $width, $height);
+
+              // A função imagejpeg() cria um arquivo JPEG a partir do arquivoimage.
+              imagejpeg($thumb, $dir . "mini_" . $newName);
+
+              $arrPhoto[$i] = $newName;
+              $arrMini[$i] = "mini" . $newName;
+            } else {
+              $validatePhoto = 0;
             }
-            $newName = uniqid() . $ex;
-            move_uploaded_file($_FILES["photograph" . ($i + 1)]["tmp_name"], "../imgCar/" . $newName);
+          } else {
+
+            $arrPhoto[$i] = "";
+            $arrMini[$i] = "";
           }
+        } else {
+          $arrPhoto[$i] = "";
+          $arrMini[$i] = "";
         }
+      }
+
+      if ($validatePhoto == 1) {
+        $idBrand = intval($_POST["brand"]);
+        $idModel = intval($_POST["model"]);
+        $version = addslashes($_POST["version"]);
+        $yearOfManufacture = intval($_POST["year_of_manufacture"]);
+        $modelYear = intval($_POST["model_year"]);
+        $observation = addslashes($_POST["observation"]);
+        $value = floatval(number_format($_POST["value"]));
+        $photo1 = $arrPhoto[0];
+        $photo2 = $arrPhoto[1];
+        $mini1 = $arrMini[0];
+        $mini2 = $arrMini[1];
+        $opc1 = isset($_POST["opc1"]) ? 1 : 0;
+        $opc2 = isset($_POST["opc2"]) ? 1 : 0;
+        $opc3 = isset($_POST["opc3"]) ? 1 : 0;
+        $sold = 0;
+        $blocked = 0;
+
+        $tb_car->insertCar($idBrand, $idModel, $version, $yearOfManufacture, $modelYear, $observation, $value, $photo1, $photo2, $mini1, $mini2, $opc1, $opc2, $opc3, $sold, $blocked);
+
+        echo "<p class = 'message'>Carro cadastrado com sucesso.</p>";
+      } else {
+        echo "<p class = 'message'>Extenção de foto diferente de JPG ou JPEG,
+        favor inserir uma foto valida.</p>";
       }
     }
     ?>
@@ -73,6 +153,7 @@ if (isset($_SESSION["numlogin"])) {
       <select name="brand" id="brand" class="input_form_generic">
         <option value=""></option>
 
+        <!-- Preenchendo os options dinamicamente com PHP  -->
         <?php
         $arrBrand = $tb_brand->selectDataAllBrand();
         if ($arrBrand) {
@@ -86,6 +167,8 @@ if (isset($_SESSION["numlogin"])) {
       <label for="model">Modelo:</label>
       <select name="model" id="model" class="input_form_generic">
         <option value=""></option>
+
+        <!-- Preenchendo os options dinamicamente com PHP  -->
         <?php
         $arrModel = $tb_model->selectDataAllModel();
         if ($arrModel) {
@@ -112,9 +195,16 @@ if (isset($_SESSION["numlogin"])) {
       <input type="text" name="value" id="id_value" pattern="[0-9]+$" required class="input_form_generic">
 
       <div class="div_photograph">
-        <label class="label_photograph btn_generic" for="photograph1">Foto 1</label>
+        <label class="label_photograph" for="photograph1">
+          <span class="label_photograph1">Selecionar Foto 1: </span>
+          <span>Procurar</span>
+        </label>
         <input type="file" name="photograph1" id="photograph1" class="photograph">
-        <label class="label_photograph btn_generic" for="photograph2">Foto 2</label>
+
+        <label class="label_photograph" for="photograph2">
+          <span class="label_photograph2">Selecionar Foto 2: </span>
+          <span>Procurar</span>
+        </label>
         <input type="file" name="photograph2" id="photograph2" class="photograph">
       </div>
 
