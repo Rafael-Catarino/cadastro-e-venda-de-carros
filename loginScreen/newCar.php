@@ -63,56 +63,50 @@ if (isset($_SESSION["numlogin"])) {
 
       for ($i = 0; $i < 2; $i++) {
 
-        // A função isset determina se uma variavel está declarada e é diferente de null.
-        if (isset($_FILES["photograph" . ($i + 1)]["name"])) {
+        // A função isset determina se uma variavel está declarada e é diferente de Vazio.
+        if ($_FILES["photograph" . ($i + 1)]["name"] != "") {
 
-          if ($_FILES["photograph" . ($i + 1)]["name"] != "") {
+          // A função strtolower() converte todos os caracteres alfabéticos ASCII em minúsculas.
+          // A função substr() Retorna a parte de string especificada pelo parâmetro offset e length.
+          $ex = strtolower(substr($_FILES["photograph" . ($i + 1)]["name"], -4));
 
-            // A função strtolower() converte todos os caracteres alfabéticos ASCII em minúsculas.
-            // A função substr() Retorna a parte de string especificada pelo parâmetro offset e length.
-            $ex = strtolower(substr($_FILES["photograph" . ($i + 1)]["name"], -4));
+          if ($ex == ".jpg" or $ex == "jpeg") {
 
-            if ($ex == ".jpg" or $ex == "jpeg") {
-
-              if ($ex == "jpeg") {
-                $ex = ".jpeg";
-              }
-
-              // A função uniqid() obtém um identificador(nome) exclusivo prefixado com base na hora atual em microssegundos.
-              $newName = uniqid() . $ex;
-
-              // A função move_uploaded_file() verifica se o arquivo designado por from é um arquivo válido (o que significa que foi carregado através do mecanismo de upload HTTP POST do PHP).Se o arquivo for válido, ele será movido para o nome de arquivo fornecido por to.
-              move_uploaded_file($_FILES["photograph" . ($i + 1)]["tmp_name"], $dir . $newName);
-
-              // Criando as miniaturas das imagens.
-
-              // A função list() atribui cada elemento de um array a uma variavel criada pela list().
-              // A função getimagesize() retorna um array com as dimenções de uma imagem, seu tipo e uma string de texto de altura/largura a ser usada dentro de uma tag HTML IMG normal.
-              list($width, $height, $type) = getimagesize($dir . $newName);
-
-              // A função imagecreatefromjpeg() retorna um identificador de imagem que representa a imagem obtida de um determinado nome de arquivo.
-              $image = imagecreatefromjpeg($dir . $newName);
-
-              // A função imagecreatetruecolor() retorna um objeto de imagem representando uma imagem preta do tamanho especificado.
-              $thumb = imagecreatetruecolor(117, 80);
-
-              // A função imagecopyresampled() copia uma parte retangular de uma imagem para outra imagem, interpolando suavemente os valores dos pixels para que, em particular, a redução do tamanho de uma imagem ainda retenha uma grande clareza.
-              imagecopyresampled($thumb, $image, 0, 0, 0, 0, 117, 80, $width, $height);
-
-              // A função imagejpeg() cria um arquivo JPEG a partir do arquivoimage.
-              imagejpeg($thumb, $dir . "mini_" . $newName);
-
-              $arrPhoto[$i] = $newName;
-              $arrMini[$i] = "mini" . $newName;
-            } else {
-              $validatePhoto = 0;
+            if ($ex == "jpeg") {
+              $ex = ".jpeg";
             }
-          } else {
 
-            $arrPhoto[$i] = "";
-            $arrMini[$i] = "";
+            // A função uniqid() obtém um identificador(nome) exclusivo prefixado com base na hora atual em microssegundos.
+            $newName = uniqid() . $ex;
+
+            // A função move_uploaded_file() verifica se o arquivo designado por from é um arquivo válido (o que significa que foi carregado através do mecanismo de upload HTTP POST do PHP).Se o arquivo for válido, ele será movido para o nome de arquivo fornecido por to.
+            move_uploaded_file($_FILES["photograph" . ($i + 1)]["tmp_name"], $dir . $newName);
+
+            // Criando as miniaturas das imagens.
+
+            // A função list() atribui cada elemento de um array a uma variavel criada pela list().
+            // A função getimagesize() retorna um array com as dimenções de uma imagem, seu tipo e uma string de texto de altura/largura a ser usada dentro de uma tag HTML IMG normal.
+            list($width, $height, $type) = getimagesize($dir . $newName);
+
+            // A função imagecreatefromjpeg() retorna um identificador de imagem que representa a imagem obtida de um determinado nome de arquivo.
+            $image = imagecreatefromjpeg($dir . $newName);
+
+            // A função imagecreatetruecolor() retorna um objeto de imagem representando uma imagem preta do tamanho especificado.
+            $thumb = imagecreatetruecolor(117, 80);
+
+            // A função imagecopyresampled() copia uma parte retangular de uma imagem para outra imagem, interpolando suavemente os valores dos pixels para que, em particular, a redução do tamanho de uma imagem ainda retenha uma grande clareza.
+            imagecopyresampled($thumb, $image, 0, 0, 0, 0, 117, 80, $width, $height);
+
+            // A função imagejpeg() cria um arquivo JPEG a partir do arquivoimage.
+            imagejpeg($thumb, $dir . "mini_" . $newName);
+
+            $arrPhoto[$i] = $dir . $newName;
+            $arrMini[$i] = $dir . "mini_" . $newName;
+          } else {
+            $validatePhoto = 0;
           }
         } else {
+
           $arrPhoto[$i] = "";
           $arrMini[$i] = "";
         }
@@ -125,7 +119,7 @@ if (isset($_SESSION["numlogin"])) {
         $yearOfManufacture = intval($_POST["year_of_manufacture"]);
         $modelYear = intval($_POST["model_year"]);
         $observation = addslashes($_POST["observation"]);
-        $value = floatval(number_format($_POST["value"]));
+        $value = floatval($_POST["value"]);
         $photo1 = $arrPhoto[0];
         $photo2 = $arrPhoto[1];
         $mini1 = $arrMini[0];

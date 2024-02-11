@@ -2,6 +2,8 @@
 class Car
 {
   private $connection;
+  private $maximum_records_displayed = 2;
+  private $start = 1;
 
   public function __construct($localhost, $user, $password, $dbname)
   {
@@ -60,5 +62,12 @@ class Car
     $res->bindValue(":sold", $sold);
     $res->bindValue(":blocked", $blocked);
     $res->execute();
+  }
+
+  public function selectAllData()
+  {
+    $res = $this->connection->prepare("SELECT * FROM tb_car LIMIT " . $this->start . "," . $this->maximum_records_displayed . ";");
+    $res->execute();
+    return $res->fetchAll(PDO::FETCH_ASSOC);
   }
 }
